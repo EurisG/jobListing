@@ -107,7 +107,11 @@ class App extends React.Component {
                 })} */}
                 <hr />
                 <br />
-                <form onSubmit={this.handleForm}>
+                {/* <h2>Add new job here!</h2> */}
+                <br />
+                <form onSubmit={this.handleForm} className="form">
+                <h2>Add new job here!</h2>
+                <br />
                     <label htmlFor="title">Role</label>{" "}
                     <input 
                         type="text"
@@ -156,15 +160,34 @@ class App extends React.Component {
                         <input type="submit" />
                 </form>
                 {/* <h2>{this.state.title}</h2> */}
+                <br />
                 <hr />
                 {this.state.jobs.map((element) => {
                     return(
-                        <div>
+                        <div className="jobs">
+                            
                             <h2>{element.title}</h2>
+                            
                             <h2>{element.company}</h2>
+                           
                             <h2>{element.location}</h2>
+                           
                             <h2>{element.salary}</h2>
+                          
                             <h2>{element.description}</h2>
+                            <button 
+                                    onClick={() => {
+                                        return this.deleteJob(job._id, index);
+                                    }}>delete</button>
+                                    {" "}
+                                     <button
+                                    onClick={() => {
+                                        return this.updateJob(job, index);
+                                    }}
+                                    >
+                                    {" "}
+                                   {" "}
+                                    update</button>
                             </div>
                     )
                 })}
@@ -172,21 +195,9 @@ class App extends React.Component {
                         {this.state.jobs.map((job) => {
                             return(
                                 <li>
-                                    <div className={"job.complete" ? "complete" : ""}>
+                                    <div className={"jobs.complete" ? "complete" : ""}>
                                         {job.jobs}{" "}
                                     </div>
-                                    <button 
-                                    onClick={() => {
-                                        return this.deleteJob(job._id);
-                                    }}>delete</button>
-                                     <button
-                                    onClick={() => {
-                                        return this.updateJob(job);
-                                    }}
-                                    >
-                                    {" "}
-                                   {" "}
-                                    update</button>
                                 </li>
                             )
                         })}

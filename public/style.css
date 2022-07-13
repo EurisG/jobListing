@@ -4,10 +4,25 @@
 }
 
 body {
-    background-color: lightcyan
+    background-color: #ccaf7fc5;
+    color: black;
 }
 
 .header {
-    background-color: white;
+    background-color: #425267;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.jobs{
+    margin: 15px;
+    padding: 10px;
+    border: solid 20px white;
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.form{
     text-align: center;
 }
