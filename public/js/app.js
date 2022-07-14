@@ -121,9 +121,16 @@ class App extends React.Component {
                             <b>Url:</b> <a href="" target="_blank">{element.link}</a>
                            <br />
                            <br />
-                            <button className="Btn"
+                           <div>
+                        {this.state.jobs.map((job, index) => {
+                            return(
+                                <div>
+                                    <div className={"jobs.complete" ? "complete" : ""}>
+                                        {job.jobs}{" "}
+                                    </div>
+                                     <button className="Btn"
                                     onClick={() => {
-                                        return this.deleteJob(jobs._id, index);
+                                        return this.deleteJob(job._id, index);
                                     }}>delete</button>
                                     {" "}
                                      <button className="Btn"
@@ -134,21 +141,39 @@ class App extends React.Component {
                                     {" "}
                                    {" "}
                                     update</button>
+                                </div>
+                            )
+                        })}
+                    </div>
+                          
                                     </div>
                             </div>
                     )
                 })}
-                    <ul>
-                        {this.state.jobs.map((job) => {
+                    {/* <ul>
+                        {this.state.jobs.map((job, index) => {
                             return(
                                 <li>
                                     <div className={"jobs.complete" ? "complete" : ""}>
                                         {job.jobs}{" "}
                                     </div>
+                                     <button className="Btn"
+                                    onClick={() => {
+                                        return this.deleteJob(job._id, index);
+                                    }}>delete</button>
+                                    {" "}
+                                     <button className="Btn"
+                                    onClick={() => {
+                                        return this.updateJob(job, index);
+                                    }}
+                                    >
+                                    {" "}
+                                   {" "}
+                                    update</button>
                                 </li>
                             )
                         })}
-                    </ul>
+                    </ul> */}
                     <div>
                     <form onSubmit={this.handleForm} className="form">
                 <h2>Add new job here!</h2>
