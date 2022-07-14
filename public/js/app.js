@@ -72,7 +72,7 @@ class App extends React.Component {
 
     updateJob = (job, index) => {
         job.complete = !job.complete;
-        console.log(job);
+        // console.log(job);
         fetch(`jobs/${job._id}`, {
             body: JSON.stringify(job, index),
             method: "PUT",
@@ -135,7 +135,8 @@ class App extends React.Component {
                                     {" "}
                                      <button className="Btn"
                                     onClick={() => {
-                                        return this.updateJob(job, index);
+                                        return this.updateJob(job, index)
+                                        ;
                                     }}
                                     >
                                     {" "}
@@ -144,36 +145,13 @@ class App extends React.Component {
                                 </div>
                             )
                         })}
-                    </div>
+                        </div>
                           
-                                    </div>
                             </div>
+                        </div>
                     )
                 })}
-                    {/* <ul>
-                        {this.state.jobs.map((job, index) => {
-                            return(
-                                <li>
-                                    <div className={"jobs.complete" ? "complete" : ""}>
-                                        {job.jobs}{" "}
-                                    </div>
-                                     <button className="Btn"
-                                    onClick={() => {
-                                        return this.deleteJob(job._id, index);
-                                    }}>delete</button>
-                                    {" "}
-                                     <button className="Btn"
-                                    onClick={() => {
-                                        return this.updateJob(job, index);
-                                    }}
-                                    >
-                                    {" "}
-                                   {" "}
-                                    update</button>
-                                </li>
-                            )
-                        })}
-                    </ul> */}
+                   
                     <div>
                     <form onSubmit={this.handleForm} className="form">
                 <h2>Add new job here!</h2>

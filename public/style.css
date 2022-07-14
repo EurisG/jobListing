@@ -46,9 +46,22 @@ body {
    
 }
 
+
 .Btn {
-    padding: 5px;
+    padding: 7px;
     cursor: pointer;
+    background-color: #eb8968c9;
+    transition: .3s ease-in-out;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.Btn:hover {
+    padding: 9px;
+    cursor: pointer;
+    background-color: #EA5D2C;
+   border: none;
 }
 
 .footer {
