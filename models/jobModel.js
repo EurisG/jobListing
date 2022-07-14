@@ -4,7 +4,7 @@ const jobSchema = new mongoose.Schema({
     title: {
         type: String,
     }, 
-    Company: {
+    company: {
         type: String,
     },
     location: {
@@ -14,6 +14,9 @@ const jobSchema = new mongoose.Schema({
         type: String,
     },
     description: {
+        type: String,
+    },
+    link: {
         type: String,
     },
     complete: {

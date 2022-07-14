@@ -30,6 +30,7 @@ class App extends React.Component {
 
     handleForm = (e) => {
         e.preventDefault();
+        console.log("clicked")
         fetch("/jobs", {
             body: JSON.stringify({
                 title: this.state.title,
@@ -39,10 +40,10 @@ class App extends React.Component {
                 description: this.state.description,
             }),
             method: "POST",
-            // headers: {
-            //     "Content-Type": "application/json",
-            //      Accept: "application/json, text/plain, */*",
-            // },
+            headers: {
+                "Content-Type": "application/json",
+                 Accept: "application/json, text/plain, */*",
+            },
         })
         .then((res) => {
             return res.json();
@@ -73,7 +74,7 @@ class App extends React.Component {
         job.complete = !job.complete;
         console.log(job);
         fetch(`jobs/${job._id}`, {
-            body: JSON.stringify(job),
+            body: JSON.stringify(job, index),
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -96,23 +97,64 @@ class App extends React.Component {
     render() {
         return(
             <div>
-                <h1 className="header">My Job Listings</h1>
-                {/* {console.log(this.state.jobs[0] && this.state.jobs[0].title)} */}
-                {/* {this.state.jobs.map((element) => {
+                <div className="header">
+                <h1 >My Job Finder</h1>
+                <img className="logo" src="https://www.hivemechanic.org/wp-content/uploads/2022/06/ApplyNow-orange.png"></img>
+                </div>
+                <img className="image" src="https://images.unsplash.com/photo-1575212639485-8f48c3dd7f90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80"></img>
+                <br />
+                <hr />
+                {this.state.jobs.map((element) => {
                     return(
-                        <div>
-                            <h1>{element.title}</h1>
+                        <div >
+                            <div className="jobs">
+                            <h2>Role: {element.title}</h2>
+                            <br />
+                            <h3>Company: {element.company}</h3>
+                            <br />
+                            <h4>Location: {element.location}</h4>
+                            <br />
+                            <h4>Salary: {element.salary}</h4>
+                            <br />
+                            <p><b>Description: </b>{element.description}</p>
+                            <br/>
+                            <b>Url:</b> <a href="" target="_blank">{element.link}</a>
+                           <br />
+                           <br />
+                            <button className="Btn"
+                                    onClick={() => {
+                                        return this.deleteJob(jobs._id, index);
+                                    }}>delete</button>
+                                    {" "}
+                                     <button className="Btn"
+                                    onClick={() => {
+                                        return this.updateJob(job, index);
+                                    }}
+                                    >
+                                    {" "}
+                                   {" "}
+                                    update</button>
+                                    </div>
                             </div>
                     )
-                })} */}
-                <hr />
-                <br />
-                {/* <h2>Add new job here!</h2> */}
-                <br />
-                <form onSubmit={this.handleForm} className="form">
+                })}
+                    <ul>
+                        {this.state.jobs.map((job) => {
+                            return(
+                                <li>
+                                    <div className={"jobs.complete" ? "complete" : ""}>
+                                        {job.jobs}{" "}
+                                    </div>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <div>
+                    <form onSubmit={this.handleForm} className="form">
                 <h2>Add new job here!</h2>
                 <br />
-                    <label htmlFor="title">Role</label>{" "}
+               
+                    <label htmlFor="title">Role :</label>{" "}
                     <input 
                         type="text"
                         id="title"
@@ -149,7 +191,7 @@ class App extends React.Component {
                         <br />
                         <br />
                     <label htmlFor="description">Job description :</label>{" "}
-                    <input 
+                    <textarea 
                         type="text"
                         id="description"
                         onChange={this.handleChange}
@@ -157,51 +199,23 @@ class App extends React.Component {
                         />
                         <br />
                         <br />
-                        <input type="submit" />
+                        <label htmlFor="link">Link :</label>{" "}
+                    <input 
+                        type="text"
+                        id="link"
+                        onChange={this.handleChange}
+                        value={this.state.link}
+                        />
+                        <br />
+                        <br />
+                        <input type="submit" className="Btn" />
+
+                        
                 </form>
-                {/* <h2>{this.state.title}</h2> */}
-                <br />
-                <hr />
-                {this.state.jobs.map((element) => {
-                    return(
-                        <div className="jobs">
-                            
-                            <h2>{element.title}</h2>
-                            
-                            <h2>{element.company}</h2>
-                           
-                            <h2>{element.location}</h2>
-                           
-                            <h2>{element.salary}</h2>
-                          
-                            <h2>{element.description}</h2>
-                            <button 
-                                    onClick={() => {
-                                        return this.deleteJob(job._id, index);
-                                    }}>delete</button>
-                                    {" "}
-                                     <button
-                                    onClick={() => {
-                                        return this.updateJob(job, index);
-                                    }}
-                                    >
-                                    {" "}
-                                   {" "}
-                                    update</button>
-                            </div>
-                    )
-                })}
-                    <ul>
-                        {this.state.jobs.map((job) => {
-                            return(
-                                <li>
-                                    <div className={"jobs.complete" ? "complete" : ""}>
-                                        {job.jobs}{" "}
-                                    </div>
-                                </li>
-                            )
-                        })}
-                    </ul>
+                </div>
+                <footer>
+                    <h3 className="footer">Euris Gonzalez 2022©</h3>
+                </footer>
             </div>
         )
     }

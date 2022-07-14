@@ -10,19 +10,50 @@ body {
 
 .header {
     background-color: #425267;
-    text-align: center;
-    padding: 20px;
+    /* text-align: center; */
+    padding: 25px;
     color: white;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 70px;
+    height: 70px;
+}
+
+.image {
+    width: 100%;
+   
 }
 
 .jobs{
-    margin: 15px;
+    margin: 35px;
     padding: 10px;
-    border: solid 20px white;
-    /* display: flex;
-    justify-content: space-between; */
+    border: solid 10px white;
+    width: 70%;
+    position: relative;
+    left: 150px;
 }
 
 .form{
+    text-align: center;
+    background-color: #425267;
+    background-size: cover;
+    padding: 20px;
+    color: #EA5D2C;
+   
+}
+
+.Btn {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.footer {
+    background-color: rgba(0, 0, 0, 0.732);
+    color: white;
+    padding: 50px;
     text-align: center;
 }
